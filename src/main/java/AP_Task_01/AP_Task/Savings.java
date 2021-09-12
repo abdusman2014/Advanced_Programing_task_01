@@ -1,5 +1,6 @@
 package AP_Task_01.AP_Task;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Savings extends Account {
@@ -14,6 +15,11 @@ public class Savings extends Account {
 		transactionZakatRecord = new ArrayList<Integer>();
 		/*transactionBalanceRecord = new ArrayList<Double>();
 		transactionBalanceRecord = new ArrayList<Double>();*/
+	}
+	public Savings(Customer customer,String accountNo,double balance,String dateCreated)  {
+		super(customer,accountNo,balance,dateCreated);
+		intrestRate = 10;
+		transactionZakatRecord = new ArrayList<Integer>();
 	}
 
 	@Override
@@ -35,6 +41,7 @@ public class Savings extends Account {
 		if(balance>=20000) {
 			double amount = (balance*2.5)/100;
 			balance -= amount;
+			 transactionDateRecord.add(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss") );
 			transactionAmountRecord.add(amount);
 			transactionBalanceRecord.add(balance);
 			transactionZakatRecord.add(transactionAmountRecord.size() -1);
@@ -49,6 +56,7 @@ public class Savings extends Account {
 		// TODO Auto-generated method stub
 		if(amount<=balance) {
 			balance -= amount;
+			transactionDateRecord.add(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss") );
 			transactionAmountRecord.add(amount);
 			transactionBalanceRecord.add(balance);
 		}

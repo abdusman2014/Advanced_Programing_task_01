@@ -1,4 +1,6 @@
 package AP_Task_01.AP_Task;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;  
 
 import java.util.ArrayList;
 
@@ -8,7 +10,7 @@ abstract class Account {
 	protected String accountNo;
 	protected double balance;
 	protected String dateCreated;
-	protected ArrayList<String> transactionDateRecord;
+	protected ArrayList<DateTimeFormatter> transactionDateRecord;
 	protected ArrayList<Double> transactionAmountRecord;
 	protected ArrayList<Double> transactionBalanceRecord;
 	//private boolean flag; 			//if 0 =>saving account, if 1 => checking account
@@ -19,7 +21,7 @@ abstract class Account {
 		accountNo = "\0";
 		balance = 0;
 		dateCreated = "\0";
-		transactionDateRecord = new ArrayList<String>();
+		transactionDateRecord = new ArrayList<DateTimeFormatter>();
 		transactionAmountRecord = new ArrayList<Double>();
 		transactionBalanceRecord = new ArrayList<Double>();
 		//flag = false;
@@ -27,13 +29,13 @@ abstract class Account {
 	
 
 
-	public Account(Customer customer,String accountNo,double balance,String dateCreated, boolean flag) {
+	public Account(Customer customer,String accountNo,double balance,String dateCreated) {
 		this.customer = new Customer(customer);
 		this.accountNo = accountNo;
 		this.balance = balance;
 		this.dateCreated = dateCreated;
-		transactionDateRecord = new ArrayList<String>();
-		transactionBalanceRecord = new ArrayList<Double>();
+		transactionDateRecord = new ArrayList<DateTimeFormatter>();
+		transactionAmountRecord = new ArrayList<Double>();
 		transactionBalanceRecord = new ArrayList<Double>();
 		//this.flag = flag;
 
@@ -87,9 +89,12 @@ abstract class Account {
 	public void printStatement() {
 		System.out.println( "Customer name: " + customer.getName());
 		System.out.println( "Account Number: " + accountNo);
+		LocalDateTime now = LocalDateTime.now();  
 		for(int i=0;i<transactionAmountRecord.size();++i) {
 			System.out.println( "Transaction amount: " +  transactionAmountRecord.get(i));
 			System.out.println( "balance remaining: " +  transactionBalanceRecord.get(i));
+			System.out.println( "Date of Transaction: " +  transactionDateRecord.get(i).format(now));
+			 
 		}
 	}
 	

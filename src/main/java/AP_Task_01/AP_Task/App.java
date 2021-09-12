@@ -14,13 +14,20 @@ public class App
     	
     	//subClass obj = new subClass();
     	//obj.printCustomer();
+    	Customer customer = new Customer(1,"abdullah","islamabad","238974093");
+    	Savings obj = new Savings(customer,"2",10000,"9/10/2021");
     	
-    	ArrayList<String> obj = new ArrayList<String>();
+    	obj.makeWithdrawal(5000);
     	
-    	obj.add("add 1");
-    	obj.add("add 2");
-    	obj.remove(0);
+    	obj.checkBalance();
     	
-        System.out.println( obj.get(0) );
+    	obj.calculateZakat();
+    	
+    	obj.makeWithdrawal(2000);
+    	
+    	obj.printStatement();
+    	
+    	
+        System.out.println(  );
     }
 }
