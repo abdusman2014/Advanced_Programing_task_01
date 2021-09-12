@@ -20,7 +20,7 @@ abstract class Account {
 		balance = 0;
 		dateCreated = "\0";
 		transactionDateRecord = new ArrayList<String>();
-		transactionBalanceRecord = new ArrayList<Double>();
+		transactionAmountRecord = new ArrayList<Double>();
 		transactionBalanceRecord = new ArrayList<Double>();
 		//flag = false;
 	}
@@ -85,7 +85,12 @@ abstract class Account {
 	}
 	
 	public void printStatement() {
-		
+		System.out.println( "Customer name: " + customer.getName());
+		System.out.println( "Account Number: " + accountNo);
+		for(int i=0;i<transactionAmountRecord.size();++i) {
+			System.out.println( "Transaction amount: " +  transactionAmountRecord.get(i));
+			System.out.println( "balance remaining: " +  transactionBalanceRecord.get(i));
+		}
 	}
 	
 	public abstract void displayAllDeductions();

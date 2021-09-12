@@ -1,5 +1,7 @@
 package AP_Task_01.AP_Task;
 
+import java.util.ArrayList;
+
 /**
  * Hello world!
  *
@@ -13,6 +15,12 @@ public class App
     	//subClass obj = new subClass();
     	//obj.printCustomer();
     	
-        System.out.println( "Hello World" );
+    	ArrayList<String> obj = new ArrayList<String>();
+    	
+    	obj.add("add 1");
+    	obj.add("add 2");
+    	obj.remove(0);
+    	
+        System.out.println( obj.get(0) );
     }
 }

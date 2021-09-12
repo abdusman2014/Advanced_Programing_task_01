@@ -40,7 +40,7 @@ public class Checkings extends Account {
 		}
 
 	}
-
+						
 	@Override
 	public void displayAllDeductions() {
 		// TODO Auto-generated method stub
