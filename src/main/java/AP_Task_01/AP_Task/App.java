@@ -52,7 +52,7 @@ boolean exitCode = true;
 					System.out.println( "Press 2 to open savings account:"  );
 					opt = s.nextInt();
 					s.nextLine();
-				}while(opt<1 && opt>2);
+				}while(opt<1 || opt>2);
 				if(opt == 1) {
 					myAccounts.add(new Checkings(new Customer(name,address,number),balance));
 				}
