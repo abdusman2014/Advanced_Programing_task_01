@@ -3,6 +3,8 @@ package AP_Task_01.AP_Task;
 
 public class Customer {
 	
+	private static int idx = 0;
+	
 	private int id;
 	private String name;
 	private String address;
@@ -15,8 +17,9 @@ public class Customer {
 		number = "\0";
 	}
 	
-	public Customer(int id, String name, String address, String number) {
-		this.id = id;
+	public Customer( String name, String address, String number) {
+		idx++;
+		this.id = idx;
 		this.name = name;
 		this.address = address;
 		this.number = number;

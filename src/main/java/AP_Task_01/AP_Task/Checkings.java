@@ -20,8 +20,8 @@ public class Checkings extends Account {
 		transactionBalanceRecord = new ArrayList<Double>();*/
 	}
 	
-	public Checkings(Customer customer,String accountNo,double balance,String dateCreated)  {
-		super(customer,accountNo,balance,dateCreated);
+	public Checkings(Customer customer,double balance)  {
+		super(customer,balance);
 		freeTransactions = 1;
 		additionalAmount = 5000;
 		transactionTaxRecord = new ArrayList<Integer>();

@@ -3,13 +3,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;  
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 abstract class Account {
 
 	protected Customer customer;
 	protected String accountNo;
 	protected double balance;
-	protected String dateCreated;
+	protected DateTimeFormatter dateCreated;
 	protected ArrayList<DateTimeFormatter> transactionDateRecord;
 	protected ArrayList<Double> transactionAmountRecord;
 	protected ArrayList<Double> transactionBalanceRecord;
@@ -20,7 +21,7 @@ abstract class Account {
 		customer = new Customer();
 		accountNo = "\0";
 		balance = 0;
-		dateCreated = "\0";
+		dateCreated = null;
 		transactionDateRecord = new ArrayList<DateTimeFormatter>();
 		transactionAmountRecord = new ArrayList<Double>();
 		transactionBalanceRecord = new ArrayList<Double>();
@@ -29,16 +30,23 @@ abstract class Account {
 	
 
 
-	public Account(Customer customer,String accountNo,double balance,String dateCreated) {
+	public Account(Customer customer,double balance) {
 		this.customer = new Customer(customer);
-		this.accountNo = accountNo;
+		 StringTokenizer st1 =
+	             new StringTokenizer(customer.getName(), " ");
+		this.accountNo = st1.nextToken() + customer.getId();//accountNo;
+		System.out.println("Your account number is, this will be required when you will login: " + this.accountNo);
 		this.balance = balance;
-		this.dateCreated = dateCreated;
+		this.dateCreated = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		transactionDateRecord = new ArrayList<DateTimeFormatter>();
 		transactionAmountRecord = new ArrayList<Double>();
 		transactionBalanceRecord = new ArrayList<Double>();
 		//this.flag = flag;
 
+	}
+	
+	public String getName() {
+		return customer.getName();
 	}
 
 	public int getId() {
@@ -54,7 +62,7 @@ abstract class Account {
 		return balance;
 	}
 
-	public String getDateCreated() {
+	public DateTimeFormatter getDateCreated() {
 		return dateCreated;
 	}
 
@@ -91,8 +99,8 @@ abstract class Account {
 		System.out.println( "Account Number: " + accountNo);
 		LocalDateTime now = LocalDateTime.now();  
 		for(int i=0;i<transactionAmountRecord.size();++i) {
-			System.out.println( "Transaction amount: " +  transactionAmountRecord.get(i));
-			System.out.println( "balance remaining: " +  transactionBalanceRecord.get(i));
+			System.out.print( "Transaction amount: " +  transactionAmountRecord.get(i) + ", ");
+			System.out.print( "balance remaining: " +  transactionBalanceRecord.get(i) + ", ");
 			System.out.println( "Date of Transaction: " +  transactionDateRecord.get(i).format(now));
 			 
 		}

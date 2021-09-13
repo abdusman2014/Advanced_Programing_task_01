@@ -16,8 +16,8 @@ public class Savings extends Account {
 		/*transactionBalanceRecord = new ArrayList<Double>();
 		transactionBalanceRecord = new ArrayList<Double>();*/
 	}
-	public Savings(Customer customer,String accountNo,double balance,String dateCreated)  {
-		super(customer,accountNo,balance,dateCreated);
+	public Savings(Customer customer,double balance)  {
+		super(customer,balance);
 		intrestRate = 10;
 		transactionZakatRecord = new ArrayList<Integer>();
 	}
@@ -25,6 +25,10 @@ public class Savings extends Account {
 	@Override
 	public void displayAllDeductions() {
 		// TODO Auto-generated method stub
+		if(transactionZakatRecord.isEmpty()) {
+			System.out.println("No Zakat deduction performed untill now:");
+			return;
+		}
 		System.out.println("Zakat details:");
 		for(int i=0;i<transactionZakatRecord.size();++i) {
 			System.out.println("amount withdraw: " + transactionAmountRecord.get(transactionZakatRecord.get(i)));
@@ -45,6 +49,7 @@ public class Savings extends Account {
 			transactionAmountRecord.add(amount);
 			transactionBalanceRecord.add(balance);
 			transactionZakatRecord.add(transactionAmountRecord.size() -1);
+			System.out.println("trans zakat: "+ transactionZakatRecord.size());
 		}
 		else {
 			System.out.println( "Balance is less than 20,000");
@@ -68,11 +73,13 @@ public class Savings extends Account {
 	public double getIntrestRate() {
 		return intrestRate;
 	}
-
-
-
-
-
-
-
 }
+	
+
+
+
+
+
+
+
+
