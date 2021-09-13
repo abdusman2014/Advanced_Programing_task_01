@@ -29,9 +29,11 @@ boolean exitCode = true;
 				System.out.println("!!!!!!!! Main Menu !!!!!!!!!!!!!! "  );
 				System.out.println("Press 1 to Create an account: "  );
 				System.out.println("Press 2 to Login to a specific account"  );
-				System.out.println( "Press 4 to exit" );
+				System.out.println("Press 3 to  view details of all accounts"  );
+				System.out.println("Press 4 to  view details of all accounts diductions"  );
+				System.out.println( "Press 5 to exit" );
 				flag = s.nextInt();
-			}while(flag <1 && flag > 4);
+			}while(flag <1 || flag > 5);
 			s.nextLine();
 			if(flag == 1) {
 				String name = "\0",address = "\0", number = "\0";
@@ -97,7 +99,7 @@ boolean exitCode = true;
 							}
 							option = s.nextInt();
 
-						}while(option <1 && option >6 && ( !(myAccounts.get(Index) instanceof Savings)));
+						}while(( option <1 || option >7)  );
 						if(option ==1) {
 							double amount = 0;
 							System.out.print("Enter deposit amount: ");
@@ -128,7 +130,7 @@ boolean exitCode = true;
 							s.hasNextLine();
 							myAccounts.get(Index).transferAmount(amount, bank);
 						}
-						else if(option == 7) {
+						else if(option == 7 && (myAccounts.get(Index) instanceof Savings)) {
 							System.out.println("****");
 							((Savings)myAccounts.get(Index)).calculateZakat();
 						}
@@ -151,6 +153,29 @@ boolean exitCode = true;
 					}
 				}
 
+			}
+			else if(flag ==3) {
+				for (int i=0;i<myAccounts.size();++i) {
+					myAccounts.get(i).checkBalance();
+					if (myAccounts.get(i) instanceof Savings) {
+						System.out.println("Savings Account");
+					}
+					else {
+						System.out.println("Checking Account");
+					}
+				}
+			}
+			else if(flag ==4) {
+				for(int i=0;i<myAccounts.size();++i) {
+					System.out.println("Account holder name: " + myAccounts.get(i).getName());
+					if (myAccounts.get(i) instanceof Savings) {
+						System.out.println("Savings Account");
+					}
+					else {
+						System.out.println("Checking Account");
+					}
+					myAccounts.get(i).displayAllDeductions();
+				}
 			}
 			else {
 				exitCode = false;
