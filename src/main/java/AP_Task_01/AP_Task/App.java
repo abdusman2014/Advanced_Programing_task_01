@@ -140,8 +140,8 @@ boolean exitCode = true;
 						
 						String chk = "\0";
 						do {
-							System.out.println("Press y to make more functionality: ");
-							System.out.println("or Press n to logout and move to main menu: ");
+							System.out.println("Press n to logout: ");
+							System.out.println("or Press y to continue with your account: ");
 							chk = s.nextLine();
 							System.out.println("opt: " + chk);
 						}while(!chk.equals("n")  && !chk.equals("N") && !chk.equals("y") && !chk.equals("Y"));
