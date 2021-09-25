@@ -85,7 +85,7 @@ abstract class Account {
 	}
 
 	public void transferAmount(double amount, String bankName ) {
-		if(amount>=balance) {
+		if(amount<=balance) {
 			balance -= amount;
 			System.out.println( "Amount transfered to " + bankName);
 		}

@@ -35,7 +35,9 @@ public class Checkings extends Account {
 		}
 		
 		if(additionalAmount>0 && amount<=balance + additionalAmount) {
+			System.out.println(balance);
 			balance -= amount;
+			System.out.println(balance);
 			if(balance <0) {
 				additionalAmount -= (balance) - (2*balance);
 			}
